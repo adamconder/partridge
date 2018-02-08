@@ -49,7 +49,14 @@ object Partridge {
   }
 
   def london(args: Array[String]): String = {
-    ???
+    val stations = Set(
+      "Rejection",
+      "Disappointment",
+      "Backstabbing Central",
+      "Shattered Dreams Parkway"
+    )
+
+    if(stations.subsetOf(args.toSet)) "Smell my cheese you mother!" else "No, seriously, run. You will miss it."
   }
 
 }
