@@ -1,3 +1,5 @@
+import scala.util.{Failure, Success, Try}
+
 object Partridge {
 
   private val terms = List(
@@ -25,7 +27,25 @@ object Partridge {
   }
 
   def apple(x: Any): String = {
-    ???
+
+    def toInt(num : Any) : Try[Int] = {
+//      num match {
+//        case n : Int => Success(n)
+//        case _ => Failure(new IllegalArgumentException("Cannot create an instance of Int"))
+//      }
+
+      Try(num.toString.toInt)
+    }
+
+    val failure = "Help yourself to a honeycomb Yorkie for the glovebox"
+    val success = "It's hotter than the sun!!"
+
+    toInt(x).fold(
+      _ => failure,
+      n => {
+        if(n * n > 1000) success
+        else failure
+      })
   }
 
   def london(args: Array[String]): String = {
